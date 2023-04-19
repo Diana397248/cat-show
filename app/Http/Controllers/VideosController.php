@@ -64,7 +64,7 @@ class VideosController extends Controller
     {
         return Inertia::render('Video', [
             'video' =>  VideoResource::make(Video::find($id))->resolve(),
-            'comments' => Comment::all(),
+            'comments' => Comment::where('video_id',$id)->get(),
             'recommendedVideos' => VideoResource::collection(
                 Video::inRandomOrder()->limit(20)->get()
             )->collection,

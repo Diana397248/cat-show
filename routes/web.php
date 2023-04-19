@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VideosController;
 use App\Http\Resources\VideoResource;
@@ -39,6 +40,12 @@ Route::get('/delete-video', function () {
 Route::get('/clips/{id}', [VideosController::class, 'show'])->name('clips.show');
 Route::post('/clips', [VideosController::class, 'store'])->name('clips.store');
 Route::delete('/clips/{id}', [VideosController:: class, 'destroy'])->name('clips.destroy');
+
+
+Route::get('/comments', [CommentController::class, 'index']);
+Route::get('/comments/{comment}', [CommentController::class, 'show']);
+Route::post('/comments', [CommentController::class, 'store']);
+
 
 //
 //Route::get('/', function () {

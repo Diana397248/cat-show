@@ -32,4 +32,10 @@ use Illuminate\Database\Eloquent\Model;
 class Video extends Model
 {
     use HasFactory;
+
+    public function comments()
+    {
+        return $this -> hasMany(Comment::class);
+    }
+
 }
