@@ -40,9 +40,7 @@ class CommentController extends Controller
 
         ]);
 
-//todo
-//        $attributes['user_id'] = $request->user()->id;
-        $attributes['user_id'] = 1;
+        $attributes['user_id'] = $request->user()->id;
 
         if ($request->parent_id) {
 
