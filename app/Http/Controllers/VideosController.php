@@ -10,6 +10,7 @@ use Inertia\Inertia;
 
 class VideosController extends Controller
 {
+
     /**
      * Store a newly created resource in storage.
      *
@@ -43,7 +44,7 @@ class VideosController extends Controller
         $video->title = $request->input('title');
         $video->video = $vidPath . $videoName;
         $video->thumbnail = $thumbPath . $imageName;
-        $video->user = 'John Weeks Dev';
+        $video->user = $request->user()->name;
         $video->views = rand(10, 100) . 'k views - ' . rand(1, 6) . ' days ago';
 
         $image_file->move(public_path() . $thumbPath, $imageName);
@@ -63,8 +64,8 @@ class VideosController extends Controller
     public function show($id)
     {
         return Inertia::render('Video', [
-            'video' =>  VideoResource::make(Video::find($id))->resolve(),
-            'comments' => Comment::where('video_id',$id)->get(),
+            'video' => VideoResource::make(Video::find($id))->resolve(),
+            'comments' => Comment::where('video_id', $id)->get(),
             'recommendedVideos' => VideoResource::collection(
                 Video::inRandomOrder()->limit(20)->get()
             )->collection,

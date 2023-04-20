@@ -3,7 +3,7 @@ import {Head, useForm, Link} from '@inertiajs/vue3';
 import TextInput from '@/Components/TextInput.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
-
+import PrimaryButton from '@/Components/PrimaryButton.vue';
 
 const form = useForm({
     name: '',
@@ -141,7 +141,7 @@ form {
 
 
 .container-group {
-    background-image: url("/images/CatBek.png");
+    /*background-image: url("/images/CatBek.png");*/
 
     display: flex;
     justify-content: space-evenly;

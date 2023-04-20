@@ -26,10 +26,7 @@
             <div>
                 <div class="flex mt-1.5">
                     <div>
-                        <img
-                            class="rounded-full m-1.5 mt-2 flex items-baseline w-8 h-8"
-                            :src="image || ''"
-                        >
+                        <AvatarCharacter :name="user"/>
                     </div>
                     <div class="px-1.5 text-white mt-1">
                         <div class="text-[17px] font-extrabold w-full cursor-pointer">{{
@@ -52,6 +49,7 @@
 <script setup>
 import {defineProps, toRefs, ref, watch, onMounted} from 'vue';
 import CheckCircle from 'vue-material-design-icons/CheckCircle.vue'
+import AvatarCharacter from '@/Components/AvatarCharacter.vue';
 
 const props = defineProps({
     title: String,

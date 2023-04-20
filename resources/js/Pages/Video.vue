@@ -2,10 +2,9 @@
 import {Head, Link} from '@inertiajs/vue3';
 import NavLayout from '@/Layouts/NavLayout.vue';
 import CheckCircle from 'vue-material-design-icons/CheckCircle.vue'
-import ThumbUpOutline from 'vue-material-design-icons/ThumbUpOutline.vue'
-import ThumbDownOutline from 'vue-material-design-icons/ThumbDownOutline.vue'
 import RecommendedVideos from '@/Components/RecommendedVideos.vue';
 import AddComment from '@/Components/AddComment.vue';
+import AvatarCharacter from '@/Components/AvatarCharacter.vue';
 import {onMounted, ref} from "vue";
 
 const props = defineProps({
@@ -36,10 +35,7 @@ onMounted(() => {
                 <video @mouseover="show = true" :src="video.video || ''" controls autoplay/>
                 <div class="text-white text-2xl font-extrabold mt-4">{{ video.title }}</div>
                 <div class="flex items-center mb-4">
-                    <img
-                        class="rounded-full mt-2 flex items-baseline w-12 h-12"
-                        :src="`https://picsum.photos/id/${(Math.random() * 100).toFixed(0)}/100` || ''"
-                    >
+                    <AvatarCharacter :name="video.user"/>
                     <div class="pl-2 mt-1">
                         <div class="text-white text-lg font-extrabold flex items-center">
                             {{ video.user }}
