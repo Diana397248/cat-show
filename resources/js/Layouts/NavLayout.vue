@@ -190,6 +190,6 @@ const isNavOverlay = () => {
 
 <style>
 body {
-    /*background-color: black;*/
+    background-color: black;
 }
 </style>

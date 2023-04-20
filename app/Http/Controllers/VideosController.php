@@ -88,7 +88,9 @@ class VideosController extends Controller
         if (file_exists(public_path() . $video->thumbnail)) {
             unlink(public_path() . $video->thumbnail);
         }
+        //todo change to ondelete
 
+        Comment::where('video_id', $video->id)->delete();
         $video->delete();
         return redirect()->route('deleteVideo');
     }
