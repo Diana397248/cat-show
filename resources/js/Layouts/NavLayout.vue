@@ -1,9 +1,9 @@
 <script setup>
-import { ref, onMounted } from 'vue';
-import { usePage, Link } from '@inertiajs/vue3';
+import {onMounted, ref} from 'vue';
+import {Link, usePage} from '@inertiajs/vue3';
 import SideNavItem from '../Components/SideNavItem.vue'
 import MenuIcon from 'vue-material-design-icons/Menu.vue';
-import MagnifyIcon from 'vue-material-design-icons/Magnify.vue';
+import HeaderSettings from "@/Components/HeaderSettings.vue";
 
 let openSideNav = ref(true);
 let openSideNavOverlay = ref(false);
@@ -44,7 +44,8 @@ const isNavOverlay = () => {
     <div class="relative">
         <div id="TopNav" class="w-[100%] h-[60px] fixed bg-black z-20 flex items-center justify-between">
             <div class="flex items-center">
-                <button @click="isNavOverlay()" class="p-2 ml-3 rounded-full hover:bg-gray-800 inline-block cursor-pointer">
+                <button @click="isNavOverlay()"
+                        class="p-2 ml-3 rounded-full hover:bg-gray-800 inline-block cursor-pointer">
                     <MenuIcon fillColor="#FFFFFF" :size="26"/>
                 </button>
                 <div class="mx-2"></div>
@@ -55,15 +56,9 @@ const isNavOverlay = () => {
             </div>
 
             <div>
-                <img
-                    class="rounded-full mx-8"
-                    width="60"
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/RedCat_8727.jpg/1200px-RedCat_8727.jpg"
-                >
+                <HeaderSettings/>
             </div>
         </div>
-
-
 
 
         <div v-if="width > 639">
@@ -86,27 +81,27 @@ const isNavOverlay = () => {
                     <Link :href="route('deleteVideo')">
                         <SideNavItem :openSideNav="openSideNav" iconString="Delete Video"/>
                     </Link>
-<!--                    <div class="border-b border-b-gray-700 my-2.5"></div>-->
-<!--                    <SideNavItem :openSideNav="openSideNav" iconString="Subscriptions"/>-->
-<!--                    <SideNavItem :openSideNav="openSideNav" iconString="Library"/>-->
-<!--                    <SideNavItem :openSideNav="openSideNav" iconString="Liked"/>-->
-<!--                    <SideNavItem :openSideNav="openSideNav" iconString="History"/>-->
-<!--                    <SideNavItem :openSideNav="openSideNav" iconString="Watch Later"/>-->
-<!--                    <div v-if="openSideNav">-->
-<!--                        <div class="border-b border-b-gray-700 my-2.5">-->
-<!--                    </div>-->
-<!--                    <div class="text-gray-400 text-[14px] text-extrabold">-->
-<!--                        About Press Copyright-->
-<!--                        <div>Contact us</div>-->
-<!--                        Creator Advertise Developers-->
-<!--                    </div>-->
-<!--                    <div class="border-b border-b-gray-700 my-2.5"></div>-->
-<!--                    <div class="text-gray-400 text-[14px] text-extrabold">-->
-<!--                        Terms Privacy Policy & Safety-->
-<!--                        <div>How YouTube works</div>-->
-<!--                        <span>Test new features</span>-->
-<!--                    </div>-->
-<!--                    </div>-->
+                    <!--                    <div class="border-b border-b-gray-700 my-2.5"></div>-->
+                    <!--                    <SideNavItem :openSideNav="openSideNav" iconString="Subscriptions"/>-->
+                    <!--                    <SideNavItem :openSideNav="openSideNav" iconString="Library"/>-->
+                    <!--                    <SideNavItem :openSideNav="openSideNav" iconString="Liked"/>-->
+                    <!--                    <SideNavItem :openSideNav="openSideNav" iconString="History"/>-->
+                    <!--                    <SideNavItem :openSideNav="openSideNav" iconString="Watch Later"/>-->
+                    <!--                    <div v-if="openSideNav">-->
+                    <!--                        <div class="border-b border-b-gray-700 my-2.5">-->
+                    <!--                    </div>-->
+                    <!--                    <div class="text-gray-400 text-[14px] text-extrabold">-->
+                    <!--                        About Press Copyright-->
+                    <!--                        <div>Contact us</div>-->
+                    <!--                        Creator Advertise Developers-->
+                    <!--                    </div>-->
+                    <!--                    <div class="border-b border-b-gray-700 my-2.5"></div>-->
+                    <!--                    <div class="text-gray-400 text-[14px] text-extrabold">-->
+                    <!--                        Terms Privacy Policy & Safety-->
+                    <!--                        <div>How YouTube works</div>-->
+                    <!--                        <span>Test new features</span>-->
+                    <!--                    </div>-->
+                    <!--                    </div>-->
                 </ul>
             </div>
         </div>
@@ -154,26 +149,26 @@ const isNavOverlay = () => {
                 <Link :href="route('deleteVideo')">
                     <SideNavItem :openSideNav="true" iconString="Delete Video"/>
                 </Link>
-<!--                <div class="border-b border-b-gray-700 my-2.5"></div>-->
-<!--                <SideNavItem :openSideNav="true" iconString="Subscriptions"/>-->
-<!--                <SideNavItem :openSideNav="true" iconString="Library"/>-->
-<!--                <SideNavItem :openSideNav="true" iconString="Liked"/>-->
-<!--                <SideNavItem :openSideNav="true" iconString="History"/>-->
-<!--                <SideNavItem :openSideNav="true" iconString="Watch Later"/>-->
-<!--                <div v-if="true">-->
-<!--                    <div class="border-b border-b-gray-700 my-2.5"></div>-->
-<!--                <div class="text-gray-400 text-[14px] text-extrabold">-->
-<!--                    About Press Copyright-->
-<!--                    <div>Contact us</div>-->
-<!--                    Creator Advertise Developers-->
-<!--                </div>-->
-<!--                <div class="border-b border-b-gray-700 my-2.5"></div>-->
-<!--                <div class="text-gray-400 text-[14px] text-extrabold">-->
-<!--                    Terms Privacy Policy & Safety-->
-<!--                    <div>How YouTube works</div>-->
-<!--                    <span>Test new features</span>-->
-<!--                </div>-->
-<!--                </div>-->
+                <!--                <div class="border-b border-b-gray-700 my-2.5"></div>-->
+                <!--                <SideNavItem :openSideNav="true" iconString="Subscriptions"/>-->
+                <!--                <SideNavItem :openSideNav="true" iconString="Library"/>-->
+                <!--                <SideNavItem :openSideNav="true" iconString="Liked"/>-->
+                <!--                <SideNavItem :openSideNav="true" iconString="History"/>-->
+                <!--                <SideNavItem :openSideNav="true" iconString="Watch Later"/>-->
+                <!--                <div v-if="true">-->
+                <!--                    <div class="border-b border-b-gray-700 my-2.5"></div>-->
+                <!--                <div class="text-gray-400 text-[14px] text-extrabold">-->
+                <!--                    About Press Copyright-->
+                <!--                    <div>Contact us</div>-->
+                <!--                    Creator Advertise Developers-->
+                <!--                </div>-->
+                <!--                <div class="border-b border-b-gray-700 my-2.5"></div>-->
+                <!--                <div class="text-gray-400 text-[14px] text-extrabold">-->
+                <!--                    Terms Privacy Policy & Safety-->
+                <!--                    <div>How YouTube works</div>-->
+                <!--                    <span>Test new features</span>-->
+                <!--                </div>-->
+                <!--                </div>-->
             </ul>
         </div>
         <!-- OVERLAY NAV SECTION END -->
@@ -187,14 +182,14 @@ const isNavOverlay = () => {
                 'w-[100vw]': width < 639
             }"
         >
-            <slot />
+            <slot/>
         </div>
     </div>
 
 </template>
 
 <style>
-    body {
-        /*background-color: black;*/
-    }
+body {
+    /*background-color: black;*/
+}
 </style>
