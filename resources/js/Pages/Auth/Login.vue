@@ -1,41 +1,93 @@
 <script setup>
-import {Head, Link} from '@inertiajs/vue3';
-import NavLayout from '@/Layouts/NavLayout.vue';
-import VideoCard from '@/Components/VideoCard.vue';
+import {Head, Link, useForm} from '@inertiajs/vue3';
+import TextInput from '@/Components/TextInput.vue';
+import InputError from '@/Components/InputError.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
 
 defineProps({
-    videos: Array
+    canResetPassword: Boolean,
+    status: String,
 });
+
+const form = useForm({
+    email: '',
+    password: '',
+});
+
+const submit = () => {
+    form.post(route('login'), {
+        onFinish: () => form.reset('password'),
+    });
+};
 </script>
 
 <template>
-        <Head title="CatShow"/>
-        <div class="container-login">
-            <form>
-                <div class="form-container">
-                    <h1>Добро пожаловать на CatShow</h1>
-                    <hr>
+    <Head title="CatShow"></Head>
+    <div class="container-login">
+        <form  @submit.prevent="submit">
 
-                    <label for="email"><b>Email</b></label>
-                    <input type="text" placeholder="Enter Email" name="email" required>
+            <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+                {{ status }}
+            </div>
+            <div class="form-container">
+                <h1>Добро пожаловать на CatShow</h1>
+                <hr>
+                <div>
+                    <InputLabel for="email" value="Email"/>
 
-                    <label for="psw"><b>Пароль</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
-
-
-                    <button type="submit" class="registerbtn">Продолжить</button>
+                    <TextInput
+                        id="email"
+                        type="email"
+                        class="mt-1 block w-full rounded-full"
+                        v-model="form.email"
+                        required
+                        autofocus
+                        autocomplete="username"
+                    />
+                    <InputError class="mt-2" :message="form.errors.email"/>
                 </div>
 
-                <div class="form-container signin">
-                    <p>У вас ещё нет аккаунта? <a href="#"> Зарегистрироваться</a></p>
+                <div>
+                    <InputLabel for="password" value="Password"/>
+
+                    <TextInput
+                        id="password"
+                        type="password"
+                        class="mt-1 block w-full rounded-full"
+                        v-model="form.password"
+                        required
+                        autofocus
+                        autocomplete="username"
+                    />
+                    <InputError class="mt-2" :message="form.errors.password"/>
                 </div>
-            </form>
-        </div>
+                <PrimaryButton class="ml-4 rounded-full registerbtn" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    Продолжить
+                </PrimaryButton>
+            </div>
+
+            <div class="form-container block w-full">
+                <Link
+                    :href="route('register')"
+                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                    <p class="signin py-3 rounded-full">У вас ещё нет аккаунта? <a href="#"> Зарегистрироваться</a></p>
+                </Link>
+            </div>
+        </form>
+    </div>
+
 </template>
 
 <style>
-
+form {
+    background: rgba(217, 217, 217, 0.8);
+    border-radius: 40px;
+    padding: 30px;
+}
 .container-login {
+    background-image: url("/images/CatBek.png");
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -61,7 +113,7 @@ h1 {
 
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input[type=text], input[type=email], input[type=password] {
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -70,7 +122,7 @@ input[type=text], input[type=password] {
     background: #f1f1f1;
 }
 
-input[type=text]:focus, input[type=password]:focus {
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
     background-color: #ddd;
     outline: none;
 }

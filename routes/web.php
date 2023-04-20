@@ -47,18 +47,17 @@ Route::get('/comments', [CommentController::class, 'index']);
 Route::get('/comments/{comment}', [CommentController::class, 'show']);
 Route::post('/comments', [CommentController::class, 'store']);
 
+
+//todo test and remove if needed
+
 Route::get('/test_404', function () {
     return Inertia:: render('Error404', []);
 })->name('test_404');
 
-Route::get('/test_register', function () {
-    return Inertia:: render('Register', []);
-})->name('test_register');
 
-//todo test and remove if needed
-Route::get('/test_login', function () {
-    return Inertia:: render('Login', []);
-})->name('test_login');
+
+
+
 
 
 //
