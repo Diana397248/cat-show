@@ -9,7 +9,7 @@ defineProps({
 </script>
 
 <template>
-    <Head title="YouTube"/>
+    <Head title="CatShow"/>
 
     <NavLayout>
         <div class="grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2">

@@ -9,12 +9,20 @@ defineProps({
 </script>
 
 <template>
-        <Head title="CatShow"/>
-        <div class="container-login">
+    <Head title="CatShow"/>
+    <div class="container-group">
+        <div class="text">
+            <h1>Зарегестрируйтесь, чтобы смотреть больше смешных видео с котиками</h1>
+        </div>
+        <div class="form-block">
             <form>
                 <div class="form-container">
                     <h1>Добро пожаловать на CatShow</h1>
+                    <p>Пожалуйста, заполните эту форму, чтобы создать учетную запись</p>
                     <hr>
+
+                    <label for="name"><b>Имя</b></label>
+                    <input type="text" placeholder="Enter Name" name="name" required>
 
                     <label for="email"><b>Email</b></label>
                     <input type="text" placeholder="Enter Email" name="email" required>
@@ -22,30 +30,44 @@ defineProps({
                     <label for="psw"><b>Пароль</b></label>
                     <input type="password" placeholder="Enter Password" name="psw" required>
 
+                    <label for="psw-repeat"><b>Повтор Пароля</b></label>
+                    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+                    <hr>
 
                     <button type="submit" class="registerbtn">Продолжить</button>
                 </div>
 
-                <div class="form-container signin">
-                    <p>У вас ещё нет аккаунта? <a href="#"> Зарегистрироваться</a></p>
-                </div>
+                <p class="sign_text">У вас уже есть аккаунт? <a href="#"> Войти</a></p>
             </form>
         </div>
+
+    </div>
 </template>
 
 <style>
+* {
+    box-sizing: border-box
+}
+.form-block{
+    width:40%;
+}
+.text {
+    width: 545px;
+    height: 244px;
+    left: 200px;
+    top: 450px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 61px;
+}
 
-.container-login {
+
+.container-group {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     height: 100vh;
-}
-
-/* Add padding to containers */
-.form-container {
-    padding: 16px;
-    width: 100%;
 }
 
 .form-container h1 {
@@ -56,6 +78,10 @@ defineProps({
 h1 {
     font-size: 50px;
     font-weight: 700;
+    text-align: center;
+}
+
+p {
     text-align: center;
 }
 
@@ -83,17 +109,14 @@ hr {
 
 /* Set a style for the submit/register button */
 .registerbtn {
-    display: block;
     background-color: #658DCB;
     color: white;
-    padding: 10px 20px;
-    margin: 0 auto;
+    padding: 16px 20px;
+    margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 30%;
+    width: 100%;
     opacity: 0.9;
-    border-radius: 30px;
-
 }
 
 .registerbtn:hover {
@@ -106,7 +129,8 @@ a {
 }
 
 /* Set a grey background color and center the text of the "sign in" section */
-.signin {
+.sign_text {
+    margin-top: 20px;
     background-color: #f1f1f1;
     text-align: center;
 }

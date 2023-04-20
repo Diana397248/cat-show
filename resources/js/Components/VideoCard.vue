@@ -1,5 +1,5 @@
 <template>
-    <div class="relative">
+    <div class="relative video-card">
         <div
             class="rounded-lg bg-black m-2"
             :class="[
@@ -10,7 +10,7 @@
         >
             <div @mouseover="show = true" @mouseleave="show = false; showVideo = false">
                 <img
-                    class="aspect-video cursor-pointer"
+                    class="aspect-video cursor-pointer card-image"
                     :src="thumbnail || ''"
                     :class="
                         show
@@ -89,6 +89,13 @@ watch(() => show.value, (show) => {
 })
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+.video-card .card-image {
+    height: 150px;
+    width: 100%;
+}
 
+.video-card {
+    width: 100%;
+}
 </style>

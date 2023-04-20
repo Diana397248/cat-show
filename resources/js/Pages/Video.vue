@@ -28,7 +28,7 @@ onMounted(() => {
 
 <template>
 
-    <Head title="Youtube"/>
+    <Head title="CatShow"/>
 
     <NavLayout>
         <div class="xl:flex">

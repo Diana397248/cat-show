@@ -35,11 +35,11 @@
   let icon = null
 
   if (iconString.value === 'Home') icon = Home
-  if (iconString.value === 'Subscriptions') icon = FolderPlayOutline
-  if (iconString.value === 'Library') icon = ImageMultiple
-  if (iconString.value === 'Liked') icon = ThumbUpOutline
-  if (iconString.value === 'History') icon = History
-  if (iconString.value === 'Watch Later') icon = ClockOutline
+  // if (iconString.value === 'Subscriptions') icon = FolderPlayOutline
+  // if (iconString.value === 'Library') icon = ImageMultiple
+  // if (iconString.value === 'Liked') icon = ThumbUpOutline
+  // if (iconString.value === 'History') icon = History
+  // if (iconString.value === 'Watch Later') icon = ClockOutline
   if (iconString.value === 'Add Video') icon = VideoPlusOutlineIcon
   if (iconString.value === 'Delete Video') icon = DeleteIcon
 </script>
