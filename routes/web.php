@@ -55,6 +55,7 @@ Route::get('/test_register', function () {
     return Inertia:: render('Register', []);
 })->name('test_register');
 
+//todo test and remove if needed
 Route::get('/test_login', function () {
     return Inertia:: render('Login', []);
 })->name('test_login');
