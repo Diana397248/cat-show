@@ -29,13 +29,13 @@ defineProps({
 
 const getColor = (text) => {
     if (text === 'Веселые')
-        return "rgb(191 219 254)"
+        return "rgba(191,219,254,0.69)"
     else if (text === 'Милые')
-        return "rgb(99 102 241)"
+        return "rgba(99,102,241,0.76)"
     else if (text === 'Все')
-        return "rgb(163 230 53)"
+        return "rgba(163,230,53,0.7)"
     else
-        return "rgb(251 191 36)"
+        return "rgba(251,191,36,0.68)"
 }
 </script>
 
