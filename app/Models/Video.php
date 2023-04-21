@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Video
@@ -14,19 +16,23 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $thumbnail
  * @property string $user
  * @property string $views
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|Video newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Video newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Video query()
- * @method static \Illuminate\Database\Eloquent\Builder|Video whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Video whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Video whereThumbnail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Video whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Video whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Video whereUser($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Video whereVideo($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Video whereViews($value)
+ * @property string $description
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @method static Builder|Video newModelQuery()
+ * @method static Builder|Video newQuery()
+ * @method static Builder|Video query()
+ * @method static Builder|Video whereCreatedAt($value)
+ * @method static Builder|Video whereId($value)
+ * @method static Builder|Video whereThumbnail($value)
+ * @method static Builder|Video whereTitle($value)
+ * @method static Builder|Video whereUpdatedAt($value)
+ * @method static Builder|Video whereUser($value)
+ * @method static Builder|Video whereVideo($value)
+ * @method static Builder|Video whereViews($value)
+ * @method static Builder|Video whereDescription($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Comment> $comments
+ * @property-read int|null $comments_count
  * @mixin \Eloquent
  */
 class Video extends Model
@@ -35,7 +41,7 @@ class Video extends Model
 
     public function comments()
     {
-        return $this -> hasMany(Comment::class);
+        return $this->hasMany(Comment::class);
     }
 
 }

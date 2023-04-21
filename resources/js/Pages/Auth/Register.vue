@@ -29,7 +29,7 @@ const submit = () => {
             <h1 class="title">Зарегестрируйтесь, чтобы смотреть больше смешных видео с котиками</h1>
         </div>
         <div class="form-block">
-            <form @submit.prevent="submit">
+            <form class="register-form" @submit.prevent="submit">
                 <div class="form-container">
                     <h1>Добро пожаловать на CatShow</h1>
                     <p>Пожалуйста, заполните эту форму, чтобы создать учетную запись</p>
@@ -118,7 +118,7 @@ const submit = () => {
 * {
     box-sizing: border-box
 }
-form {
+.register-form {
     background: rgba(217, 217, 217, 0.8);
     border-radius: 40px;
     padding: 30px;
@@ -177,7 +177,7 @@ p {
 
 
 /* Full-width input fields */
-input[type=text], input[type=email], input[type=password] {
+.register-form input[type=text], .register-form input[type=email], .register-form input[type=password] {
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;

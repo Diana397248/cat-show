@@ -24,6 +24,7 @@ class VideoResource extends JsonResource
             'thumbnail'=> $this-> thumbnail,
             'user'=> $this-> user,
             'views'=> $this-> views,
+            'description'=> $this-> description,
             'created_time'=> $this-> updated_at-> diffForHumans(),
         ];
     }

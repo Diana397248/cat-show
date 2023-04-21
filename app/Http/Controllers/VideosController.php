@@ -42,6 +42,13 @@ class VideosController extends Controller
         $videoName = time() . '.' . $extension;
 
         $video->title = $request->input('title');
+        $desc = $request->input('description');
+        if ($desc === null) {
+            $video->description = "";
+        } else {
+            $video->description = $desc;
+
+        }
         $video->video = $vidPath . $videoName;
         $video->thumbnail = $thumbPath . $imageName;
         $video->user = $request->user()->name;

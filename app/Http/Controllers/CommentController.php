@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CommentResource;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
@@ -16,9 +17,12 @@ class CommentController extends Controller
     {
 //        return Comment::with('user', 'video')->get();
 
-        return Comment::where('video_id', $request->query('id'))
-            ->orderBy('created_at', 'desc')
+        $resource = Comment::with('user', 'video')-> where('video_id', $request->query('id'))
+            ->orderBy('updated_at', 'desc')
             ->get();
+        return CommentResource::collection(
+            $resource
+        )->collection;
     }
 
     /**

@@ -22,7 +22,9 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
-        'videos' => VideoResource::collection(Video::inRandomOrder()->get())->collection
+        'videos' => VideoResource::collection(
+            Video::orderBy('updated_at', 'desc')->get()
+        )->collection
     ]);
 })->name('home');
 
@@ -53,11 +55,6 @@ Route::post('/comments', [CommentController::class, 'store']);
 Route::get('/test_404', function () {
     return Inertia:: render('Error404', []);
 })->name('test_404');
-
-
-
-
-
 
 
 //

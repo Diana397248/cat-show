@@ -25,7 +25,7 @@ const submit = () => {
 <template>
     <Head title="CatShow"></Head>
     <div class="container-login">
-        <form  @submit.prevent="submit">
+        <form class="login-form"  @submit.prevent="submit">
 
             <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
                 {{ status }}
@@ -81,7 +81,7 @@ const submit = () => {
 </template>
 
 <style>
-form {
+.login-form {
     background: rgba(217, 217, 217, 0.8);
     border-radius: 40px;
     padding: 30px;
@@ -113,7 +113,7 @@ h1 {
 
 
 /* Full-width input fields */
-input[type=text], input[type=email], input[type=password] {
+.login-form input[type=text], .login-form input[type=email], .login-form input[type=password] {
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;

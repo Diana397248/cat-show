@@ -59,34 +59,30 @@ onMounted(() => {
                 <div class="bg-[#3F3F3F] rounded-lg w-full p-3 text-white">
                     <!--                    <div class="text-white text-lg font-extrabold">{{ video.views }}</div>-->
                     <div class="text-white text-lg font-extrabold">{{ video.created_time }}</div>
-                    <div class="text-sm font-extrabold mb-6">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </div>
-                    <div class="text-sm font-extrabold">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book.
+                    <div class="text-sm font-extrabold mb-6"></div>
+                    <div class="text-sm font-extrabold" style="width:1300px;">
+                        {{ video.description }}
                     </div>
                 </div>
 
 
-                <AddComment :id="video.id" :updateComments="updateComments"/>
+                <AddComment v-if="$page.props.auth.user" :id="video.id" :updateComments="updateComments"/>
 
                 <div class="mt-6">
                     <div class="text-white text-lg font-extrabold">{{ comments.length }} Comments</div>
                     <div v-for="comment in comments" :key="comment">
                         <div class="flex items-flex mb-4 mt-2">
-                            <img
-                                class="rounded-full mt-2 w-12 h-12"
-                                :src="`https://picsum.photos/id/${(Math.random() * 100).toFixed(0)}/100` || ''"
-                            >
+                            <AvatarCharacter :name="comment.user.name"/>
                             <div class="pl-6 mt-1">
                                 <div class="text-white font-extrabold flex items-baseline">
-                                    <div>{{ comment.user }}</div>
+                                    <div>{{ comment.user.name }}</div>
                                     <div class="text-gray-400 pl-3">{{ comment.time }}</div>
                                 </div>
                                 <div class="text-gray-200 text-sm font-extrabold">
                                     {{ comment.text }}
+                                </div>
+                                <div class="text-gray-200 text-sm font-extrabold">
+                                    {{ comment.updated_time }}
                                 </div>
                                 <!--                                Лайки -->
                                 <!--                                <div class="mt-4 flex items-center">-->

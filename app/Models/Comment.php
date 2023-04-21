@@ -23,6 +23,13 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Comment whereTime($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUser($value)
+ * @property int|null $parent_id
+ * @property int $user_id
+ * @property int $video_id
+ * @method static \Database\Factories\CommentFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereVideoId($value)
  * @mixin \Eloquent
  */
 class Comment extends Model

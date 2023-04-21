@@ -1,7 +1,7 @@
 <template>
     <div class="mt-6 text-white">
 
-        <form @submit.prevent="addComment">
+        <form class="add-comment-form" @submit.prevent="addComment">
             <div>
                 <input
                     v-model="text"

@@ -75,10 +75,10 @@ const isNavOverlay = () => {
                     <Link :href="route('home')">
                         <SideNavItem :openSideNav="openSideNav" iconString="Home"/>
                     </Link>
-                    <Link :href="route('addVideo')">
+                    <Link v-if="$page.props.auth.user" :href="route('addVideo')">
                         <SideNavItem :openSideNav="openSideNav" iconString="Add Video"/>
                     </Link>
-                    <Link :href="route('deleteVideo')">
+                    <Link v-if="$page.props.auth.user" :href="route('deleteVideo')">
                         <SideNavItem :openSideNav="openSideNav" iconString="Delete Video"/>
                     </Link>
                     <!--                    <div class="border-b border-b-gray-700 my-2.5"></div>-->
