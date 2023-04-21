@@ -123,6 +123,13 @@ form {
     border-radius: 40px;
     padding: 30px;
 }
+.container-group {
+    background-image: url("/images/CatBek.png");
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+}
 
 .form-block {
     width: 40%;

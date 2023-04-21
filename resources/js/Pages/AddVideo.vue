@@ -73,7 +73,7 @@ const getImage = (e) => image.value = e.target.files[0]
                         py-1.5
                         text-xl
                         font-normal
-                        text-gray-200
+                        text-black-200
                         bg-black
                         placeholder-gray-400
                         bg-clip-padding
@@ -87,7 +87,7 @@ const getImage = (e) => image.value = e.target.files[0]
                         border-transparent
                         focus:ring-0
                     "
-                        placeholder="My cool video"
+                        placeholder="Мой любимый кот"
                     />
                     <span v-if="error.title" class="text-red-500">{{ error.title }}</span>
                 </div>

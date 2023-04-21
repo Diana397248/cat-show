@@ -1,7 +1,7 @@
 <template>
     <div :style="{backgroundColor: stringToColour(name)}"
          class="flex h-16 w-16 items-center justify-center rounded-full bg-blue-600">
-        <p class="text-4xl">{{ name.substring(0, 1).toUpperCase() }}</p>
+        <p class="text-4xl text-black">{{ name.substring(0, 1).toUpperCase() }}</p>
         <!--        {{name}}-->
     </div>
 </template>
