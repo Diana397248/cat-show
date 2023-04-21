@@ -102,4 +102,20 @@ class VideosController extends Controller
         $video->delete();
         return redirect()->route('deleteVideo');
     }
+
+    public function like($id)
+    {
+        $video = Video::find($id);
+        $video->likes = $video->likes + 1;
+        $video->save();
+        return $video->likes;
+    }
+
+    public function dislike($id)
+    {
+        $video = Video::find($id);
+        $video->dislikes = $video->dislikes + 1;
+        $video->save();
+        return $video->dislikes;
+    }
 }

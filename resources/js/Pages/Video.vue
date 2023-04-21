@@ -6,13 +6,33 @@ import RecommendedVideos from '@/Components/RecommendedVideos.vue';
 import AddComment from '@/Components/AddComment.vue';
 import AvatarCharacter from '@/Components/AvatarCharacter.vue';
 import {onMounted, ref} from "vue";
+import ThumbUpOutline from 'vue-material-design-icons/ThumbUpOutline.vue'
+import ThumbDownOutline from 'vue-material-design-icons/ThumbDownOutline.vue'
 
 const props = defineProps({
+    auth: Object,
     video: Object,
     recommendedVideos: Array
 })
 
 const comments = ref([])
+
+const dislikeBtnClick = () => {
+    if (props.auth.user) {
+        fetch(`/clips/${props.video.id}/dislike`, {method: "POST"})
+            .then(res => res.json())
+            .then(json => props.video.dislikes = json)
+    }
+}
+
+const likeBtnClick = () => {
+    if (props.auth.user) {
+        fetch(`/clips/${props.video.id}/like`, {method: "POST"})
+            .then(res => res.json())
+            .then(json => props.video.likes = json)
+    }
+
+}
 
 const updateComments = () => {
     fetch(`/comments?id=${props.video.id}`)
@@ -58,7 +78,19 @@ onMounted(() => {
 
                 <div class="bg-[#3F3F3F] rounded-lg w-full p-3 text-white">
                     <!--                    <div class="text-white text-lg font-extrabold">{{ video.views }}</div>-->
-                    <div class="text-white text-lg font-extrabold">{{ video.created_time }}</div>
+                    <div class="flex justify-between">
+                        <div class="pl-2 text-white text-lg font-extrabold">{{ video.created_time }}</div>
+                        <div class="pr-12 mt-4 flex items-center">
+                            <ThumbUpOutline @click="likeBtnClick" fillColor="#FFFFFF" :size="20" class="pr-2"
+                                            :class="{'hover:scale-125': $page.props.auth.user}"/>
+                            <div class="text-gray-400 text-sm font-extrabold pr-10">{{ video.likes }}</div>
+
+                            <ThumbDownOutline @click="dislikeBtnClick" fillColor="#FFFFFF" :size="20" class="pr-2"
+                                              :class="{'hover:scale-125': $page.props.auth.user}"/>
+                            <div class="text-gray-400 text-sm font-extrabold pr-10">{{ video.dislikes }}</div>
+                        </div>
+                    </div>
+
                     <div class="text-sm font-extrabold mb-6"></div>
                     <div class="text-sm font-extrabold" style="width:1300px;">
                         {{ video.description }}

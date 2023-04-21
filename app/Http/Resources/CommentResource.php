@@ -24,7 +24,7 @@ class CommentResource extends JsonResource
             "parent_id" => $this->parent_id,
             "user" => $this->user,
             "video_id" => $this->video_id,
-            'updated_time' => $this->updated_at->diffForHumans(),
+            'updated_time' => $this->created_at->diffForHumans(),
         ];
     }
 }

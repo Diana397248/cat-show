@@ -18,7 +18,7 @@ class CommentController extends Controller
 //        return Comment::with('user', 'video')->get();
 
         $resource = Comment::with('user', 'video')-> where('video_id', $request->query('id'))
-            ->orderBy('updated_at', 'desc')
+            ->orderBy('created_at', 'desc')
             ->get();
         return CommentResource::collection(
             $resource

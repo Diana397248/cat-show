@@ -23,7 +23,7 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'videos' => VideoResource::collection(
-            Video::orderBy('updated_at', 'desc')->get()
+            Video::orderBy('created_at', 'desc')->get()
         )->collection
     ]);
 })->name('home');
@@ -41,6 +41,8 @@ Route::get('/delete-video', function () {
 
 
 Route::get('/clips/{id}', [VideosController::class, 'show'])->name('clips.show');
+Route::post('/clips/{id}/like', [VideosController::class, 'like'])->name('clips.like');
+Route::post('/clips/{id}/dislike', [VideosController::class, 'dislike'])->name('clips.dislike');
 Route::post('/clips', [VideosController::class, 'store'])->name('clips.store');
 Route::delete('/clips/{id}', [VideosController:: class, 'destroy'])->name('clips.destroy');
 

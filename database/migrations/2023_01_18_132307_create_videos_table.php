@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -21,6 +20,16 @@ return new class extends Migration
             $table->text('user');
             $table->text('description');
             $table->text('views');
+            //todo category category dislikes
+            $table->string('category', 100)->default('non-category');
+            $table->bigInteger('likes')->default('0');
+            $table->bigInteger('dislikes')->default('0');
+            $table->enum('restrictions',
+                ['AVAILABLE', 'VIOLATION', 'SHADOW_BAN', 'BAN']
+            )->default('AVAILABLE');
+            $table->enum('video_type',
+                ['PUBLIC', 'PRIVATE']
+            )->default('PUBLIC');
             $table->timestamps();
         });
     }
