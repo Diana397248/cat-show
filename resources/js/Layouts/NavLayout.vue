@@ -75,6 +75,9 @@ const isNavOverlay = () => {
                     <Link :href="route('home')">
                         <SideNavItem :openSideNav="openSideNav" iconString="Home"/>
                     </Link>
+                    <Link :href="route('popular')">
+                        <SideNavItem :openSideNav="true" iconString="Popular"/>
+                    </Link>
                     <Link v-if="$page.props.auth.user" :href="route('addVideo')">
                         <SideNavItem :openSideNav="openSideNav" iconString="Add Video"/>
                     </Link>
@@ -142,6 +145,9 @@ const isNavOverlay = () => {
             <ul class=" w-full px-5 py-2 p-2 mt-2">
                 <Link :href="route('home')">
                     <SideNavItem :openSideNav="true" iconString="Home"/>
+                </Link>
+                <Link :href="route('popular')">
+                    <SideNavItem :openSideNav="true" iconString="Popular"/>
                 </Link>
                 <Link :href="route('addVideo')">
                     <SideNavItem :openSideNav="true" iconString="Add Video"/>

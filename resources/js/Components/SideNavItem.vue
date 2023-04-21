@@ -23,6 +23,7 @@
   import History from 'vue-material-design-icons/History.vue';
   import ClockOutline from 'vue-material-design-icons/ClockOutline.vue';
   import VideoPlusOutlineIcon from 'vue-material-design-icons/VideoPlusOutline.vue';
+  import Fire from 'vue-material-design-icons/Fire.vue';
   import DeleteIcon from 'vue-material-design-icons/Delete.vue';
 
   const props = defineProps({
@@ -39,7 +40,7 @@
   // if (iconString.value === 'Library') icon = ImageMultiple
   // if (iconString.value === 'Liked') icon = ThumbUpOutline
   // if (iconString.value === 'History') icon = History
-  // if (iconString.value === 'Watch Later') icon = ClockOutline
+  if (iconString.value === 'Popular') icon = Fire
   if (iconString.value === 'Add Video') icon = VideoPlusOutlineIcon
   if (iconString.value === 'Delete Video') icon = DeleteIcon
 </script>

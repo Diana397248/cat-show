@@ -28,6 +28,14 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
+Route::get('/popular', function () {
+    return Inertia::render('Popular', [
+        'videos' => VideoResource::collection(
+            Video::orderBy('likes', 'desc')->get()
+        )->collection
+    ]);
+})->name('popular');
+
 
 Route::get('/add-video', function () {
     return Inertia::render('AddVideo');
