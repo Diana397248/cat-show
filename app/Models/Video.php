@@ -33,6 +33,17 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Video whereDescription($value)
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Comment> $comments
  * @property-read int|null $comments_count
+ * @property string $category
+ * @property int $likes
+ * @property int $dislikes
+ * @property string $restrictions
+ * @property string $video_type
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Comment> $comments
+ * @method static Builder|Video whereCategory($value)
+ * @method static Builder|Video whereDislikes($value)
+ * @method static Builder|Video whereLikes($value)
+ * @method static Builder|Video whereRestrictions($value)
+ * @method static Builder|Video whereVideoType($value)
  * @mixin \Eloquent
  */
 class Video extends Model

@@ -17,6 +17,7 @@ defineProps({
 
                 <Link :href="route('clips.show', { id: video.id })">
                     <VideoCard
+                        :category="video.category"
                         :title="video.title"
                         :user="video.user"
                         :created_time="video.created_time"

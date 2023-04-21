@@ -9,11 +9,13 @@ let title = ref('')
 let description = ref('')
 let image = ref('')
 let video = ref('')
+let category = ref('non-category')
 let error = ref({
     title: null,
     image: null,
     video: null,
     description: null,
+    category: null,
 })
 
 const addVideo = () => {
@@ -23,6 +25,7 @@ const addVideo = () => {
     error.value.image = null
     error.value.video = null
     error.value.description = null
+    error.value.category = null
 
     if (!title.value) {
         error.value.title = 'Please enter a title';
@@ -37,6 +40,11 @@ const addVideo = () => {
         err = true
     }
 
+    if (!category.value) {
+        error.value.category = 'Please select a category';
+        err = true
+    }
+
     if (err) {
         return
     }
@@ -47,6 +55,7 @@ const addVideo = () => {
     data.append('image', image.value)
     data.append('video', video.value)
     data.append('description', description.value)
+    data.append('category', category.value)
 
     router.post('/clips', data)
 
@@ -54,6 +63,10 @@ const addVideo = () => {
 
 const getVideo = (e) => video.value = e.target.files[0]
 const getImage = (e) => image.value = e.target.files[0]
+
+const onChangeCategory = (event) => {
+    category.value = event.target.value
+}
 </script>
 
 <template>
@@ -127,6 +140,61 @@ const getImage = (e) => image.value = e.target.files[0]
                         placeholder="Описание видео"
                     />
                     <span v-if="error.description" class="text-red-500">{{ error.description }}</span>
+                </div>
+
+                <div class="my-5"></div>
+
+                <div>
+                    <div class="text-gray-200">Category</div>
+                    <label for="underline_select" class="sr-only">Category</label>
+                    <select @change="onChangeCategory($event)"
+                            id="underline_select"
+                            required
+                            class="
+                            form-control
+                            w-full
+                            px-5
+                            py-1.5
+                            text-xl
+                            font-normal
+                            text-black-200
+                            placeholder-gray-400
+                            bg-clip-padding
+                            border
+                            border-solid
+                            border-gray-600
+                            rounded
+                            transition
+                            ease-in-out
+                            m-0
+                            border-transparent
+                            focus:ring-0
+                            appearance-none
+                           focus:outline-none
+                           focus:ring-0
+                           focus:border-gray-200
+                            peer ">
+                        <option
+                            :selected="category === 'non-category'"
+                            value="non-category"
+                        >
+                            non-category
+                        </option>
+                        <option
+                            :selected="category === 'Веселые'"
+                            value="Веселые"
+                        >
+                            Веселые
+                        </option>
+                        <option
+                            :selected="category === 'Милые'"
+                            value="Милые"
+                        >
+                            Милые
+                        </option>
+                    </select>
+                    {{ category }}
+                    <span v-if="error.category" class="text-red-500">{{ error.category }}</span>
                 </div>
 
                 <div class="my-5"></div>

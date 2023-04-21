@@ -8,6 +8,7 @@ use App\Models\Video;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,6 +50,15 @@ Route::get('/my_videos', function (Request $request) {
         )->collection
     ]);
 })->name('my_videos');
+
+
+Route::get('/categories/{category}', function ($category) {
+    return Inertia::render('CategoriesPage', [
+        'videos' => VideoResource::collection(
+            Video::where('category', $category)->orderBy('created_at', 'desc')->get()
+        )->collection
+    ]);
+})->name('categories');
 
 
 Route::get('/add-video', function () {

@@ -5,7 +5,8 @@ import VideoCard from '@/Components/VideoCard.vue';
 import Categories from '@/Components/Categories.vue';
 
 defineProps({
-    videos: Array
+    videos: Array,
+    activeCategory: String,
 });
 </script>
 

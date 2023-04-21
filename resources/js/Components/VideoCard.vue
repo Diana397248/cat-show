@@ -24,11 +24,11 @@
                 </div>
             </div>
             <div>
-                <div class="flex mt-1.5">
+                <div class="flex mt-1.5 w-full">
                     <div>
                         <AvatarCharacter :name="user"/>
                     </div>
-                    <div class="px-1.5 text-white mt-1">
+                    <div class="px-1.5 text-white mt-1 w-full">
                         <div class="text-[17px] font-extrabold w-full cursor-pointer">{{
                                 title.substring(0, 100)
                             }}
@@ -39,6 +39,9 @@
                         </p>
                         <!--                        <div class="text-sm mb-1 text-gray-300 cursor-pointer">{{ views }}</div>-->
                         <div class="text-sm mb-1 text-gray-300 cursor-pointer">{{ created_time }}</div>
+                        <div class="flex sm:justify-start">
+                            <Tag size="xs" :text="category"></Tag>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -50,11 +53,13 @@
 import {defineProps, toRefs, ref, watch, onMounted} from 'vue';
 import CheckCircle from 'vue-material-design-icons/CheckCircle.vue'
 import AvatarCharacter from '@/Components/AvatarCharacter.vue';
+import Tag from '@/Components/Tag.vue';
 
 const props = defineProps({
     title: String,
     user: String,
     views: String,
+    category: String,
     image: String,
     created_time: String,
     videoUrl: String,
