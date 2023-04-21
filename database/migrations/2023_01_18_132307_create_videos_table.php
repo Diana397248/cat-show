@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('video');
             $table->text('thumbnail');
             $table->text('user');
+            $table->text('description');
             $table->text('views');
             $table->timestamps();
         });

@@ -21,6 +21,7 @@ class VideosSeeder extends Seeder
             'thumbnail' => '/videos/Thumbnails/Auto.png',
             'video' => '/videos/Auto.mp4',
             'user' => 'John Weeks Dev',
+            'description' => 'Description',
             'views' => '34k views - 12 days ago',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
@@ -31,6 +32,7 @@ class VideosSeeder extends Seeder
             'thumbnail' => '/videos/Thumbnails/Car.png',
             'video' => '/videos/Car.mp4',
             'user' => 'John Weeks Dev',
+            'description' => 'Description 2',
             'views' => '89k views - 2 months ago',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
@@ -41,6 +43,7 @@ class VideosSeeder extends Seeder
             'thumbnail' => '/videos/Thumbnails/Car1.png',
             'video' => '/videos/Car1.mp4',
             'user' => 'John Weeks Dev',
+            'description' => 'Description 3',
             'views' => '4k views - 6 days ago',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
