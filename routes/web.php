@@ -5,10 +5,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VideosController;
 use App\Http\Resources\VideoResource;
 use App\Models\Video;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,6 +36,21 @@ Route::get('/popular', function () {
 })->name('popular');
 
 
+Route::get('/my_videos', function (Request $request) {
+    $name = $request->user()->name;
+    if ($name === null) {
+        return Inertia::render('MyVideos', [
+            'videos' => []
+        ]);
+    }
+    return Inertia::render('MyVideos', [
+        'videos' => VideoResource::collection(
+            Video::where('user', $name)->orderBy('created_at', 'desc')->get()
+        )->collection
+    ]);
+})->name('my_videos');
+
+
 Route::get('/add-video', function () {
     return Inertia::render('AddVideo');
 })->name('addVideo');
@@ -58,13 +72,6 @@ Route::delete('/clips/{id}', [VideosController:: class, 'destroy'])->name('clips
 Route::get('/comments', [CommentController::class, 'index']);
 Route::get('/comments/{comment}', [CommentController::class, 'show']);
 Route::post('/comments', [CommentController::class, 'store']);
-
-
-//todo test and remove if needed
-
-Route::get('/test_404', function () {
-    return Inertia:: render('Error404', []);
-})->name('test_404');
 
 
 //

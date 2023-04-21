@@ -33,6 +33,7 @@ const isNavOverlay = () => {
     if (usePage().url === '/add-video') openSideNavOverlay.value = !openSideNavOverlay.value
     if (usePage().url === '/delete-video') openSideNavOverlay.value = !openSideNavOverlay.value
     if (usePage().url === '/popular') openSideNavOverlay.value = !openSideNavOverlay.value
+    if (usePage().url === '/my_videos') openSideNavOverlay.value = !openSideNavOverlay.value
     if (width.value < 640) openSideNavOverlay.value = !openSideNavOverlay.value
     if (usePage().url !== '/' && width.value < 640) openSideNavOverlay.value = !openSideNavOverlay.value
     if (usePage().props.video) openSideNavOverlay.value = !openSideNavOverlay.value
@@ -78,6 +79,9 @@ const isNavOverlay = () => {
                     </Link>
                     <Link :href="route('popular')">
                         <SideNavItem :openSideNav="openSideNav" iconString="Popular"/>
+                    </Link>
+                    <Link v-if="$page.props.auth.user"  :href="route('my_videos')">
+                        <SideNavItem :openSideNav="openSideNav" iconString="MyVideos"/>
                     </Link>
                     <Link v-if="$page.props.auth.user" :href="route('addVideo')">
                         <SideNavItem :openSideNav="openSideNav" iconString="Add Video"/>
@@ -149,6 +153,9 @@ const isNavOverlay = () => {
                 </Link>
                 <Link :href="route('popular')">
                     <SideNavItem :openSideNav="true" iconString="Popular"/>
+                </Link>
+                <Link :href="route('my_videos')">
+                    <SideNavItem :openSideNav="true" iconString="MyVideos"/>
                 </Link>
                 <Link :href="route('addVideo')">
                     <SideNavItem :openSideNav="true" iconString="Add Video"/>
