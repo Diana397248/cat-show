@@ -193,7 +193,6 @@ const onChangeCategory = (event) => {
                             Милые
                         </option>
                     </select>
-                    {{ category }}
                     <span v-if="error.category" class="text-red-500">{{ error.category }}</span>
                 </div>
 
