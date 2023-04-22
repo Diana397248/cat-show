@@ -23,15 +23,28 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'videos' => VideoResource::collection(
-            Video::orderBy('created_at', 'desc')->get()
+            Video::orderBy('created_at', 'desc')
+                ->whereIn('restrictions', ['AVAILABLE'])
+                ->get()
         )->collection
     ]);
 })->name('home');
 
+Route::get('/admin_videos', function () {
+    return Inertia::render('Welcome', [
+        'videos' => VideoResource::collection(
+            Video::orderBy('created_at', 'desc')
+                ->get()
+        )->collection
+    ]);
+})->name('admin_videos');
+
 Route::get('/popular', function () {
     return Inertia::render('Popular', [
         'videos' => VideoResource::collection(
-            Video::orderBy('likes', 'desc')->get()
+            Video::orderBy('likes', 'desc')
+                ->whereIn('restrictions', ['AVAILABLE'])
+                ->get()
         )->collection
     ]);
 })->name('popular');
@@ -46,7 +59,9 @@ Route::get('/my_videos', function (Request $request) {
     }
     return Inertia::render('MyVideos', [
         'videos' => VideoResource::collection(
-            Video::where('user', $name)->orderBy('created_at', 'desc')->get()
+            Video::where('user', $name)
+                ->whereIn('restrictions', ['AVAILABLE', 'VIOLATION', 'SHADOW_BAN'])
+                ->orderBy('likes', 'desc')->get()
         )->collection
     ]);
 })->name('my_videos');
@@ -55,7 +70,9 @@ Route::get('/my_videos', function (Request $request) {
 Route::get('/categories/{category}', function ($category) {
     return Inertia::render('CategoriesPage', [
         'videos' => VideoResource::collection(
-            Video::where('category', $category)->orderBy('created_at', 'desc')->get()
+            Video::where('category', $category)
+                ->whereIn('restrictions', ['AVAILABLE'])
+                ->orderBy('created_at', 'desc')->get()
         )->collection
     ]);
 })->name('categories');
@@ -65,11 +82,32 @@ Route::get('/add-video', function () {
     return Inertia::render('AddVideo');
 })->name('addVideo');
 
-Route::get('/delete-video', function () {
+Route::get('/delete-video', function (Request $request) {
+    if ($request->user()->name === "admin") {
+        $videos = Video::orderBy('created_at', 'desc')->get();
+    } else {
+        $videos = Video::where(
+            'user',
+            $request->user()->name
+        )
+            ->whereIn('restrictions', ['AVAILABLE', 'VIOLATION', 'SHADOW_BAN'])
+            ->orderBy('created_at', 'desc')
+            ->get();
+    }
     return Inertia:: render('DeleteVideo', [
-        'videos' => Video::all()
+        'videos' => $videos
     ]);
 })->name('deleteVideo');
+
+
+Route::post('/restriction', function (Request $request) {
+    $restriction = $request->input("restriction");
+    $video_id = $request->input("video_id");
+    $video = Video::findOrFail($video_id);
+    $video->restrictions = $restriction;
+    $video->save();
+    return redirect()->route('deleteVideo');
+})->name('restrictions');
 
 
 Route::get('/clips/{id}', [VideosController::class, 'show'])->name('clips.show');

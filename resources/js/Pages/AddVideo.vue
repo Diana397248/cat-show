@@ -71,7 +71,7 @@ const onChangeCategory = (event) => {
 
 <template>
 
-    <Head title="Youtube"/>
+    <Head title="Cat show"/>
 
     <NavLayout>
         <div class="max-w-xl mx-auto px-4  ">
@@ -178,7 +178,7 @@ const onChangeCategory = (event) => {
                             :selected="category === 'non-category'"
                             value="non-category"
                         >
-                            non-category
+                            Без категории
                         </option>
                         <option
                             :selected="category === 'Веселые'"

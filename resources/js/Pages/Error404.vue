@@ -7,7 +7,7 @@ import VideoCard from '@/Components/VideoCard.vue';
 
 <template>
     <Head title="CatShow"/>
-    <div class="error_404">
+    <div class="error_404 bg-white" style="height:100vh;">
         <a href="/">
             <img src="images/404img.png">
         </a>

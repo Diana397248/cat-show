@@ -34,6 +34,7 @@ const isNavOverlay = () => {
     if (usePage().url === '/delete-video') openSideNavOverlay.value = !openSideNavOverlay.value
     if (usePage().url === '/popular') openSideNavOverlay.value = !openSideNavOverlay.value
     if (usePage().url === '/my_videos') openSideNavOverlay.value = !openSideNavOverlay.value
+    if (usePage().url === '/admin_videos') openSideNavOverlay.value = !openSideNavOverlay.value
     if (width.value < 640) openSideNavOverlay.value = !openSideNavOverlay.value
     if (usePage().url !== '/' && width.value < 640) openSideNavOverlay.value = !openSideNavOverlay.value
     if (usePage().props.video) openSideNavOverlay.value = !openSideNavOverlay.value
@@ -74,21 +75,37 @@ const isNavOverlay = () => {
             >
 
                 <ul :class="[!openSideNav ? 'p-2' : 'px-5 pb-2 pt-[7px]']" class="mt-[60px] w-full">
+
                     <Link :href="route('home')">
                         <SideNavItem :openSideNav="openSideNav" iconString="Home"/>
                     </Link>
                     <Link :href="route('popular')">
                         <SideNavItem :openSideNav="openSideNav" iconString="Popular"/>
                     </Link>
-                    <Link v-if="$page.props.auth.user"  :href="route('my_videos')">
-                        <SideNavItem :openSideNav="openSideNav" iconString="MyVideos"/>
-                    </Link>
-                    <Link v-if="$page.props.auth.user" :href="route('addVideo')">
-                        <SideNavItem :openSideNav="openSideNav" iconString="Add Video"/>
-                    </Link>
-                    <Link v-if="$page.props.auth.user" :href="route('deleteVideo')">
-                        <SideNavItem :openSideNav="openSideNav" iconString="Delete Video"/>
-                    </Link>
+
+                    <template v-if="$page.props.auth.user&&$page.props.auth.user.name==='admin'">
+                        <Link
+                            :href="route('admin_videos')">
+                            <SideNavItem :openSideNav="openSideNav" iconString="AdminVideos"/>
+                        </Link>
+                        <Link :href="route('deleteVideo')">
+                            <SideNavItem :openSideNav="openSideNav" iconString="Delete Video"/>
+                        </Link>
+                    </template>
+
+                    <template v-if="$page.props.auth.user&&$page.props.auth.user.name!=='admin'">
+                        <Link :href="route('my_videos')">
+                            <SideNavItem :openSideNav="openSideNav" iconString="MyVideos"/>
+                        </Link>
+                        <Link :href="route('addVideo')">
+                            <SideNavItem :openSideNav="openSideNav" iconString="Add Video"/>
+                        </Link>
+                        <Link :href="route('deleteVideo')">
+                            <SideNavItem :openSideNav="openSideNav" iconString="Delete Video"/>
+                        </Link>
+                    </template>
+
+
                     <!--                    <div class="border-b border-b-gray-700 my-2.5"></div>-->
                     <!--                    <SideNavItem :openSideNav="openSideNav" iconString="Subscriptions"/>-->
                     <!--                    <SideNavItem :openSideNav="openSideNav" iconString="Library"/>-->

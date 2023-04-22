@@ -23,6 +23,7 @@ import ThumbUpOutline from 'vue-material-design-icons/ThumbUpOutline.vue';
 import History from 'vue-material-design-icons/History.vue';
 import ClockOutline from 'vue-material-design-icons/ClockOutline.vue';
 import VideoPlusOutlineIcon from 'vue-material-design-icons/VideoPlusOutline.vue';
+import AccountSupervisor from 'vue-material-design-icons/AccountSupervisor.vue';
 import ArchiveIcon from 'vue-material-design-icons/Archive.vue';
 import Fire from 'vue-material-design-icons/Fire.vue';
 import DeleteIcon from 'vue-material-design-icons/Delete.vue';
@@ -43,6 +44,7 @@ if (iconString.value === 'Home') icon = Home
 // if (iconString.value === 'History') icon = History
 if (iconString.value === 'Popular') icon = Fire
 if (iconString.value === 'MyVideos') icon = ArchiveIcon
+if (iconString.value === 'AdminVideos') icon = AccountSupervisor
 if (iconString.value === 'Add Video') icon = VideoPlusOutlineIcon
 if (iconString.value === 'Delete Video') icon = DeleteIcon
 </script>
